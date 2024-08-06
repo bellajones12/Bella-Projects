@@ -1,0 +1,8 @@
+NEW 0
+NEW 1
+{0}
+NEW 2
+Hi
+{0}
+DELETE 1 0
+REMOVE 0
