@@ -1,0 +1,2 @@
+1025
+<_io.TextIOWrapper name='root1.txt' mode='w' encoding='cp1252'>,1026

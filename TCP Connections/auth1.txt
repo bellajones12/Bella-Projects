@@ -1,0 +1,2 @@
+sample/1027
+<_io.TextIOWrapper name='auth1.txt' mode='w' encoding='cp1252'>,8987
