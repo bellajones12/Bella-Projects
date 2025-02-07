@@ -1,0 +1,31 @@
+{% include 'top.html' %}
+
+<div id="content" class="container my-4">
+
+<h1 class="page-title">Search Airline</h1>
+
+<form name="searchform" class="" method="POST" action="{{url_for('search_airports_byname')}}">
+
+    <div class="form-group">
+        <label for="searchfield">Search field:</label>
+        <select class="form-control" id="searchfield" name="searchfield" required>
+            {% for column in airport_columns %}
+                <option value="{{ column }}">{{ column }}</option>
+            {% endfor %}
+        </select>
+        <div class="invalid-feedback">Please select a search field.</div>
+    </div>
+
+    
+    <div class="form-group">
+        <label>Enter search term</label>
+        <input class="form-control" type="text" name="searchterm" placeholder="Search Term" required>
+    </div>
+    
+    <button class="btn btn-primary" type="submit">Search</button>
+</form>
+
+</div>
+
+{% include 'end.html' %}
+

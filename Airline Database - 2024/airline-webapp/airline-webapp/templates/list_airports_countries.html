@@ -1,0 +1,31 @@
+{% include 'top.html' %}
+
+<div id="content" class="container my-4">
+    <h1 class="page-title">{{page.get('title', 'Airports')}}</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th><a href="{{ url_for('display_countries', sort='airportid', order='desc' if request.args.get('order') == 'asc' else 'asc', country=country) }}">Airport Id</a></th>
+                <th><a href="{{ url_for('display_countries', sort='name', order='desc' if request.args.get('order') == 'asc' else 'asc', country=country) }}">Name</a></th>
+                <th><a href="{{ url_for('display_countries', sort='iatacode', order='desc' if request.args.get('order') == 'asc' else 'asc', country=country) }}">IATA Code</a></th>
+                <th><a href="{{ url_for('display_countries', sort='city', order='desc' if request.args.get('order') == 'asc' else 'asc', country=country) }}">City</a></th>
+                <th><a href="{{ url_for('display_countries', sort='country', order='desc' if request.args.get('order') == 'asc' else 'asc', country=country) }}">Country</a></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in airports %}
+            <tr class="align-items-center">
+                <td class="align-middle">{{item['airportid']}}</td>
+                <td class="align-middle">{{item['name']}}</td>
+                <td class="align-middle">{{item['iatacode']}}</td>
+                <td class="align-middle">{{item['city']}}</td>
+                <td class="align-middle">{{item['country']}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% include 'end.html' %}
+
+

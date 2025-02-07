@@ -1,0 +1,30 @@
+{% include 'top.html' %}
+
+<div id="content" class="container my-4">
+    <h1 class="page-title">{{page.get('title', 'Airports by Countries')}}</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th><a href="{{ url_for('list_airports_by_country', sort='country', order='desc' if request.args.get('order') == 'asc' else 'asc') }}">Country</a></th>
+                <th><a href="{{ url_for('list_airports_by_country', sort='airport_count', order='desc' if request.args.get('order') == 'asc' else 'asc') }}">Number of Airports</a></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in airports %}
+            <tr class="align-items-center">
+                <td class="align-middle">
+                    <form action="{{ url_for('display_countries') }}" method="POST" style="display: inline;">
+                        <input type="hidden" name="searchfield" value="country">
+                        <input type="hidden" name="searchterm" value="{{ item['country'] }}">
+                        <button type="submit" class="btn btn-link">{{ item['country'] }}</button>
+                    </form>
+                </td>                
+                <td class="align-middle">{{item['airport_count']}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% include 'end.html' %}
+
